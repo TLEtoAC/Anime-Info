@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>📺 Watchlist</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>📺 Your Anime Watchlist</h1>
+    <% if (watchlist.length > 0) { %>
+      <div class="watchlist-grid">
+        <% watchlist.forEach(anime => { %>
+          <div class="watchlist-card <%= anime.watched ? 'watched' : '' %>">
+            <div class="watchlist-image">
+              <img src="<%=anime.image_url%>" alt="Poster" />
+              <% if (anime.watched) { %>
+                <div class="watched-badge">✅ Watched</div>
+              <% } %>
+            </div>
+            <div class="watchlist-info">
+              <div class="watchlist-title"><%= anime.title %></div>
+              <div class="watchlist-actions">
+                <form action="/delete-anime" method="POST" style="display: inline;">
+                  <input type="hidden" name="id" value="<%= anime.id %>">
+                  <input type="hidden" name="watched" value="<%= !anime.watched %>">
+                  <button type="submit" class="btn-toggle">
+                    <% if (anime.watched) { %>
+                      🔄 Mark as Unwatched
+                    <% } else { %>
+                      ✅ Mark as Watched
+                    <% } %>
+                  </button>
+                </form>
+                <form action="/delete-anime" method="POST" style="display: inline;">
+                  <input type="hidden" name="id" value="<%= anime.id %>">
+                  <button type="submit" class="btn-delete" onclick="return confirm('Are you sure you want to remove this anime from your watchlist?')">
+                    🗑️ Delete
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <p class="empty-watchlist">No anime added yet!</p>
+    <% } %>
+
+    <a class="back-to-search" href="/">🔍 Back to Search</a>
+  </div>
+</body>
+</html>

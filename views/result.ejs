@@ -1,0 +1,16 @@
+<h2>Search Results</h2>
+<%if(locals.animeList){%>
+<% animeList.forEach(anime => { %>
+    <div class="anime-card">
+        <img src="<%= anime.images.jpg.image_url %>" width="150">
+        <h3><%= anime.title %></h3>
+        <p><%= anime.synopsis.substring(0, 150) %>...</p>
+        <form action="/anime/<%= anime.mal_id %>" method="GET">
+            <button type="submit">View More</button>
+        </form>
+    </div>
+<% }) %>
+<%} else{%>
+
+  <p><%=error%></p>
+<%}%>
