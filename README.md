@@ -91,15 +91,6 @@ Visit 👉 [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## 🖼️ Screenshot Suggestions
-
-- 🔍 Home with search bar  
-- 🎴 Anime cards layout  
-- 📖 Detailed view of a single anime  
-- ❤️ Watchlist grid layout
-
----
-
 ## 📄 License
 
 This project is open-source and intended for educational/demo use.
